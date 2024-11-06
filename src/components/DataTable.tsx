@@ -1,3 +1,4 @@
+// DataTable.tsx
 import React, { useState } from 'react';
 import Table from './Table';
 import Checkbox from './Checkbox';
@@ -16,9 +17,9 @@ const DataTable: React.FC = () => {
    };
 
    // Render rows with Checkbox and data
-   const renderRow = (row: string[]) => [
-      <Checkbox label="" checked={false} onChange={() => {}} />,
-      ...row.map((cell) => String(cell)) 
+   const renderRow = (row: [string, string]): (string | JSX.Element)[] => [
+      <Checkbox label="" checked={false} onChange={() => {}} />, // JSX element for checkbox
+      ...row.map((cell) => cell) // Ensure the row elements are strings
    ];
 
    return (

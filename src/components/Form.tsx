@@ -29,7 +29,7 @@ const Form: React.FC<FormProps> = ({ onAddData }) => {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
          />
-         <Button onClick={handleSubmit} label="Submit" />
+         <Button onClick={() => handleSubmit} label="Submit" /> {/* Ensure this matches expected type */}
       </form>
    );
 };
