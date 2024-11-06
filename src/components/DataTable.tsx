@@ -18,7 +18,7 @@ const DataTable: React.FC = () => {
    // Render rows with Checkbox and data
    const renderRow = (row: string[]) => [
       <Checkbox label="" checked={false} onChange={() => {}} />,
-      ...row
+      ...row.map((cell) => String(cell)) 
    ];
 
    return (

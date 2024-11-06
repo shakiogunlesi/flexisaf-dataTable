@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import Input from './Input';
 import Button from './Button';
 
-interface FormData {
-   name: string;
-   email: string;
-}
+type FormProps = {
+   onAddData: (newRow: [string, string]) => void; // Define the type of the function
+};
 
-const Form: React.FC<{ onAddData: (data: [string, string]) => void }> = ({ onAddData }) => {
-   const [formData, setFormData] = useState<FormData>({ name: '', email: '' });
+const Form: React.FC<FormProps> = ({ onAddData }) => {
+   const [formData, setFormData] = useState({ name: "", email: "" });
 
    const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      // Pass the form data as a tuple to onAddData
+      // Call the onAddData function to pass the data to DataTable
       onAddData([formData.name, formData.email]);
-      setFormData({ name: '', email: '' }); // Optionally clear form after submission
+      setFormData({ name: "", email: "" }); // Optionally clear the form after submit
    };
 
    return (
@@ -30,7 +29,7 @@ const Form: React.FC<{ onAddData: (data: [string, string]) => void }> = ({ onAdd
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
          />
-         <Button onClick={handleSubmit} label="Submit" disabled={!formData.name || !formData.email} />
+         <Button onClick={handleSubmit} label="Submit" />
       </form>
    );
 };
